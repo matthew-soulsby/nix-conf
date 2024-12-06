@@ -3,7 +3,7 @@
 {
   programs.git = {
     enable = true;
-    config = {
+    extraConfig = {
       init = {
         defaultBranch = "main";
       };

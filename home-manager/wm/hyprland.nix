@@ -29,6 +29,8 @@
       "$terminal" = "kitty";
       "$mod" = "SUPER";
       "$browser" = "microsoft-edge";
+      "$cbmanager" = "clipse";
+      "$launcher" = "walker";
 
       monitor = [
         "eDP-1, 2880x1800@120, 0x0, 1.5"
@@ -51,6 +53,7 @@
         "$mod, E, togglefloating,"
         "$mod, C, togglesplit,"
         "$mod, V, exec, $terminal --class clipse -e clipse"
+        "$mod, R, exec, $launcher" 
 
         # Toggle fullscreen
         "$mod SHIFT, F, fullscreen, 0"
@@ -114,14 +117,17 @@
 
       layerrule = [
         "blur, waybar"
+        "blur, logout_dialog"
       ];
 
       windowrule = [];
       windowrulev2 = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-        "float, class:(clipse)"
-        "size 622 652, class:(clipse)"
+        "float, class:($launcher)"
+        "size 622 652, class:($launcher)"
+        "float, class:($cbmanager)"
+        "size 622 652, class:($cbmanager)"
       ];
 
       exec-once = [

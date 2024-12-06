@@ -32,6 +32,9 @@
     # App Launcher
     ./utils/app-launcher.nix
 
+    # Logout Screen
+    ./utils/wlogout.nix
+
     # Apps
     ./apps/git.nix
   ];
