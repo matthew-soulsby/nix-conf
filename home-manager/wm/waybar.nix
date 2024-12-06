@@ -192,11 +192,11 @@
         network = {
           interval = 1;
           tooltip-format = "{essid}: {ipaddr}";
-          format-alt = "{ifname}: {ipaddr}/{cidr}";
           format-disconnected = "⚠";
           format-ethernet = "";
           format-linked = "󰌘";
           format-wifi = "  {signalStrength}%";
+          on-click = "networkmanager_dmenu";
         };
 
         "battery" = {

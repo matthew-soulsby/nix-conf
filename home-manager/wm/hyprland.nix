@@ -30,7 +30,7 @@
       "$mod" = "SUPER";
       "$browser" = "microsoft-edge";
       "$cbmanager" = "clipse";
-      "$launcher" = "walker";
+      "$launcher" = "fuzzel";
 
       monitor = [
         "eDP-1, 2880x1800@120, 0x0, 1.5"
@@ -124,19 +124,17 @@
       windowrulev2 = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-        "float, class:($launcher)"
-        "size 622 652, class:($launcher)"
         "float, class:($cbmanager)"
         "size 622 652, class:($cbmanager)"
       ];
 
       exec-once = [
         "waybar"
-        "clipse -listen"
         "hyprctl setcursor catppuccin-mocha-dark-cursors 32"
         "hyprpaper"
         "hypridle"
         "hyprlock"
+        "clipse -listen"
       ];
     };
   };

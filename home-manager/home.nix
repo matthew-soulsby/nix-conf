@@ -32,6 +32,9 @@
     # App Launcher
     ./utils/app-launcher.nix
 
+    # Network Manager
+    ./utils/networkmanager.nix
+
     # Logout Screen
     ./utils/wlogout.nix
 
@@ -77,6 +80,8 @@
     kitty.enable = true;
     alacritty.enable = true;
   };
+
+  gtk.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
