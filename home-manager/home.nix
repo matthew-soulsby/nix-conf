@@ -21,7 +21,7 @@
     ./wm/hyprcursor.nix
 
     # Browser
-    ./browser/edge.nix
+    ./browser/firefox.nix
 
     # Clipboard
     ./utils/clipse.nix
@@ -33,7 +33,7 @@
     ./utils/app-launcher.nix
 
     # Network Manager
-    ./utils/networkmanager.nix
+    ./utils/iwgtk.nix
 
     # Logout Screen
     ./utils/wlogout.nix
@@ -81,7 +81,26 @@
     alacritty.enable = true;
   };
 
-  gtk.enable = true;
+  gtk = {
+    enable = true;
+    font.name = "RobotoMono Nerd Font 18";
+    theme = {
+      name = "Catppuccin-GTK-Purple-Dark";
+      package = pkgs.magnetic-catppuccin-gtk.override {
+        accent = [ "purple" ];
+      };
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.catppuccin-papirus-folders;
+    };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

@@ -1,6 +1,13 @@
-{...}:
+{pkgs, ...}:
  
-{
+let 
+  hyprland_deps = with pkgs; [
+    brightnessctl
+    playerctl
+  ];
+in {
+  home.packages = hyprland_deps;
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -28,7 +35,7 @@
       # Binds
       "$terminal" = "kitty";
       "$mod" = "SUPER";
-      "$browser" = "microsoft-edge";
+      "$browser" = "firefox";
       "$cbmanager" = "clipse";
       "$launcher" = "fuzzel";
 
@@ -64,6 +71,12 @@
         "$mod, l, movefocus, r"
         "$mod, k, movefocus, u"
         "$mod, j, movefocus, d"
+
+        # Move panes
+        "$mod SHIFT, h, movewindow, l"
+        "$mod SHIFT, l, movewindow, r"
+        "$mod SHIFT, k, movewindow, u"
+        "$mod SHIFT, j, movewindow, d"
 
         # Switch workspaces
         "$mod, 1, workspace, 1"
@@ -126,6 +139,8 @@
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
         "float, class:($cbmanager)"
         "size 622 652, class:($cbmanager)"
+        "float, class:(iwgtk|pavucontrol)"
+        "move onscreen 75% 5%, class:(iwgtk|pavucontrol)"
       ];
 
       exec-once = [
@@ -134,7 +149,7 @@
         "hyprpaper"
         "hypridle"
         "hyprlock"
-        "clipse -listen"
+        "blueman-applet"
       ];
     };
   };

@@ -1,6 +1,11 @@
-{...}:
+{pkgs, ...}:
 
-{
+let
+  waybarDeps = with pkgs; [
+    pavucontrol
+  ];
+in {
+  home.packages = waybarDeps;
   programs.waybar = {
     enable = true;
     style = ''
@@ -162,7 +167,7 @@
         };
 
         "tray" = {
-          icon-size = 18;
+          icon-size = 14;
           spacing = 10;
         };
 
@@ -196,7 +201,7 @@
           format-ethernet = "";
           format-linked = "󰌘";
           format-wifi = "  {signalStrength}%";
-          on-click = "networkmanager_dmenu";
+          on-click = "iwgtk";
         };
 
         "battery" = {
@@ -219,8 +224,7 @@
             "󰂂"
             "󰁹"
           ];
-          on-click = "";
-          tooltip = false;
+          tooltip = true;
         };
 
         "custom/lock" = {

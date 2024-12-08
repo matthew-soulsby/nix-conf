@@ -76,23 +76,104 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    # Silent boot - https://wiki.archlinux.org/title/Silent_boot
-    kernelParams = [
-      "quiet"
-      "splash"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3"
-    ];
+    # Silent boot - https://wiki.nixos.org/wiki/Plymouth
+    consoleLogLevel = 0;
     initrd = {
       systemd.enable = true;
       verbose = false;
     };
-    #plymouth.enable = true;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+    plymouth.enable = true;
   };
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  #networking.networkmanager.enable = true;
+  systemd.network = {
+    enable = true;
+
+    wait-online = {
+      enable = false;
+      anyInterface = true;
+    };
+    networks = let
+      networkConfig = {
+        DHCP = "yes";
+        DNSSEC = "yes";
+        DNSOverTLS = "yes";
+        DNS = [
+         "1.1.1.1"
+         "1.0.0.1"
+        ];
+        IPv4Forwarding = "yes";
+        IPv6Forwarding = "yes";
+        IPv6AcceptRA = "yes";
+      };
+    in {
+      "10-wired" = {
+        matchConfig.Type = "ether";
+        inherit networkConfig;
+        dhcpV4Config = {
+          Use6RD = "yes";
+          RouteMetric = 512;
+          DUIDType = "link-layer";
+        };
+        dhcpV6Config = {
+          RouteMetric = 512;
+          DUIDType = "link-layer";
+          PrefixDelegationHint = "::64";
+        };
+      };
+      "10-wireless" = {
+        matchConfig.Type = "wlan";
+        inherit networkConfig;
+        dhcpV4Config = {
+          RouteMetric = 1500;
+          DUIDType = "link-layer";
+          Use6RD = "yes";
+        };
+        dhcpV6Config = {
+          RouteMetric = 1500;
+          DUIDType = "link-layer";
+          PrefixDelegationHint = "::64";
+        };
+      };
+    };
+  };
+
+  networking = {
+    hostName = "nix-laptop";
+    useNetworkd = true;
+    wireless.iwd = {
+      enable = true;
+      settings = {
+        IPv6 = {
+          Enabled = true;
+        };
+        Settings = {
+          AutoConnect = true;
+        };
+      };
+    };
+  };
+
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    system76 = {
+      power-daemon.enable = true;
+    };
+  };
+  services.blueman.enable = true;
 
   # Set your time zone.
   time.timeZone = "Australia/Melbourne";
@@ -130,7 +211,6 @@
     home-manager
     kitty
   ];
-  networking.hostName = "nix-laptop";
 
   users.users = {
     mattsoulsby = {
