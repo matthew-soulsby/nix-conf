@@ -139,8 +139,9 @@ in {
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
         "float, class:($cbmanager)"
         "size 622 652, class:($cbmanager)"
-        "float, class:(iwgtk|pavucontrol)"
-        "move onscreen 75% 5%, class:(iwgtk|pavucontrol)"
+        "float, class:(iwgtk|pavucontrol|blueman)"
+        "move onscreen 100%-w-20 5%, class:(iwgtk|pavucontrol|blueman)"
+        "size 500 652, class:(iwgtk|pavucontrol|blueman)"
       ];
 
       exec-once = [
