@@ -35,6 +35,7 @@ in
     lua-language-server
     nodejs_22
     gcc
+    rsync
   ];
 
   programs.lazygit = {
