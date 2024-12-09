@@ -20,6 +20,7 @@ let
     p.toml
     p.typescript
     p.yaml
+    p.zig
   ]));
 
   treesitter-parsers = pkgs.symlinkJoin {
@@ -33,16 +34,20 @@ in
     fd
     lua-language-server
     nodejs_22
+    gcc
   ];
+
+  programs.lazygit = {
+    enable = true;
+  };
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim;
     vimAlias = true;
     vimdiffAlias = true;
     coc.enable = false;
     withNodeJs = true;
-    withPython = true;
+    withPython3 = true;
 
     plugins = [
       treesitterWithGrammars
