@@ -38,6 +38,9 @@
     # Logout Screen
     ./utils/wlogout.nix
 
+    # Editor
+    ./editor/nvim/nvim.nix
+
     # Apps
     ./apps/git.nix
   ];

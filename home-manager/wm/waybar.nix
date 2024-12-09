@@ -63,6 +63,7 @@ in {
       #clock,
       #battery,
       #pulseaudio,
+      #bluetooth,
       #network,
       #custom-lock,
       #custom-power {
@@ -94,8 +95,15 @@ in {
         padding-right: 1.2rem;
       }
       
-      #backlight, #battery, #network {
+      #backlight, 
+      #battery, 
+      #network,
+      #bluetooth {
           border-radius: 0;
+      }
+
+      #bluetooth {
+        color: @mauve;
       }
       
       #pulseaudio {
@@ -131,16 +139,17 @@ in {
         layer = "top";
         position = "top";
 
-        modules-center = [
-          "hyprland/window"
-        ];
         modules-left = [
           "hyprland/workspaces"
+        ];
+        modules-center = [
+          "hyprland/window"
         ];
         modules-right = [ 
           "pulseaudio"
           "battery"
           "network"
+          "bluetooth"
           "clock"
           "tray"
           "custom/lock"
@@ -191,7 +200,7 @@ in {
               ""
             ];
           };
-          on-click = "sleep 0.1 && pavucontrol";
+          on-click = "pavucontrol";
         };
 
         network = {
@@ -202,6 +211,17 @@ in {
           format-linked = "󰌘";
           format-wifi = "  {signalStrength}%";
           on-click = "iwgtk";
+        };
+
+        "bluetooth" = {
+          format-on = "󰂯";
+          format-off = "󰂲";
+          format-disabled = "󰂲";
+          format-connected = "󰂱";
+          tooltip-format = "Bluetooth {status}";
+          tooltip-format-connected = "{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}\t{device_battery_percentage}%";
+          on-click = "blueman-manager";
         };
 
         "battery" = {

@@ -33,7 +33,7 @@ in {
       };
 
       # Binds
-      "$terminal" = "kitty";
+      "$terminal" = "alacritty";
       "$mod" = "SUPER";
       "$browser" = "firefox";
       "$cbmanager" = "clipse";
@@ -41,7 +41,8 @@ in {
 
       monitor = [
         "eDP-1, 2880x1800@120, 0x0, 1.5"
-        "DP-3, highrr, auto-up, 1.6"
+        "DP-3, highrr, auto-up, 1"
+        ", preferred, auto, 1"
       ];
 
       env = [
@@ -150,7 +151,6 @@ in {
         "hyprpaper"
         "hypridle"
         "hyprlock"
-        "blueman-applet"
       ];
     };
   };

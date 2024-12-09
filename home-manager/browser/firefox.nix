@@ -8,6 +8,11 @@ let
       installation_mode = "normal_installed";
     };
   };
+
+  lock-value = value: {
+    Value = value;
+    Status = "locked";
+  };
 in {
   programs.firefox = {
     enable = true;
@@ -25,6 +30,10 @@ in {
       DisableAccounts = true;
       DisableFirefoxScreenshots = true;
       SearchBar = "unified";
+
+      Preferences = {
+        "browser.newtab.extensionControlled" = lock-value false;
+      };
 
       # Add extensions
       ExtensionSettings = builtins.listToAttrs [
