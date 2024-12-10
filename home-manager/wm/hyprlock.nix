@@ -10,14 +10,14 @@
 
       "$accent" = "$red";
       "$accentAlpha" = "$flamingoAlpha";
-      "$defaultFont" = "JetBrainsMono Nerd Font";
-      "$altFont" = "RobotoMono Nerd Font";
+      "$font" = "JetBrainsMono Nerd Font";
       "$mainMonitor" = "eDP-1";
 
       general = {
         disable_loading_bar = true;
         hide_cursor = true;
       };
+
       background = [
         {
           monitor = "";
@@ -27,6 +27,7 @@
           color = "$base";
         }
       ];
+
       image = [
         # Portrait
         {
@@ -53,7 +54,7 @@
           border_size = 0;
           border_color = "rgba(253, 198, 135, 0)";
           rotate = 0;
-          xray = false; # if true, make a "hole" in the background (rectangle of specified size, no rotation)
+          xray = false;
           position = "0, -130";
           halign = "center";
           valign = "center";
@@ -67,7 +68,7 @@
           text = "cmd[update:1000] echo -e \"$(date +\"%A, %B %d\")\"";
           color = "rgba(216, 222, 233, 0.70)";
           font_size = 25;
-          font_family = "RobotoMono Nerd Font";
+          font_family = "$font";
           position = "0, 350";
           halign = "center";
           valign = "center";
@@ -79,7 +80,7 @@
           text = "cmd[update:1000] echo \"<span>$(date +\"%I:%M\")</span>\"";
           color = "rgba(216, 222, 233, 0.70)";
           font_size = 120;
-          font_family = "RobotoMono Nerd Font";
+          font_family = "$font";
           position = "0, 250";
           halign = "center";
           valign = "center";
@@ -91,11 +92,11 @@
           text = "  $USER";
           color = "rgba(216, 222, 233, 0.80)";
           outline_thickness = 2;
-          dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8
-          dots_spacing = 0.2; # Scale of dots' absolute size, 0.0 - 1.0
+          dots_size = 0.2;
+          dots_spacing = 0.2;
           dots_center = true;
-          font_size = 18;
-          font_family = "RobotoMono Nerd Font";
+          font_size = 14;
+          font_family = "$font";
           position = "0, -130";
           halign = "center";
           valign = "center";
@@ -117,7 +118,7 @@
           check_color = "$flamingo";
           fail_color = "$red";
           fade_on_empty = false;
-          font_family = "RobotoMono Nerd Font";
+          font_family = "$font";
           placeholder_text = "<span foreground=\"##ffffff99\">  Password</span>";
           fail_text = "<span>$FAIL</span>";
           hide_input = false;
