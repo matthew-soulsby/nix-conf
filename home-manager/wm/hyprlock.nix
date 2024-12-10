@@ -1,4 +1,4 @@
-{...}:
+{vars, ...}:
 
 {
   programs.hyprlock = {
@@ -8,8 +8,8 @@
         "${../../assets/hyprland/mocha.conf}"
       ];
 
-      "$accent" = "$mauve";
-      "$accentAlpha" = "$mauveAlpha";
+      "$accent" = "$flamingo";
+      "$accentAlpha" = "$flamingoAlpha";
       "$font" = "JetBrainsMono Nerd Font";
       "$mainMonitor" = "eDP-1";
 
@@ -20,7 +20,7 @@
       background = [
         {
           monitor = "";
-          path = "${../../assets/landscape_rainworld.png}";
+          path = "${vars.wallpaper}";
           blur_passes = 3;
           blur_size = 3;
           color = "$base";
@@ -66,7 +66,7 @@
       image = [
         {
           monitor = "$mainMonitor";
-          path = "${../../assets/hyprlock/face.png}";
+          path = "${vars.portrait}";
           size = 100;
           border_color = "$accent";
           position = "0, 75";

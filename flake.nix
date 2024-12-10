@@ -29,7 +29,12 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       mattsoulsby = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {
+          inherit inputs outputs;
+          vars = {
+            wallpaper = ./assets/wallpapers/catppuccin/mocha/orb-catppuccin-mocha.png;
+          };
+        };
         # > Our main nixos configuration file <
         modules = [
           catppuccin.nixosModules.catppuccin
@@ -43,7 +48,13 @@
     homeConfigurations = {
       "mattsoulsby@nix-laptop" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
+        extraSpecialArgs = {
+          inherit inputs outputs;
+          vars = {
+            wallpaper = ./assets/wallpapers/catppuccin/mocha/orb-catppuccin-mocha.png;
+            portrait = ./assets/portraits/catppuccin.png;
+          };
+        };
         # > Our main home-manager configuration file <
         modules = [
           catppuccin.homeManagerModules.catppuccin
