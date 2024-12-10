@@ -5,4 +5,4 @@ home:
 	home-manager switch --flake ".#mattsoulsby@nix-laptop"
 
 cleanup:
-	echo TODO
+	nix-collect-garbage --delete-old
