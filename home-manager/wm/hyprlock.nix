@@ -8,9 +8,10 @@
         "${../../assets/hyprland/mocha.conf}"
       ];
 
-      "$accent" = "$flamingo";
+      "$accent" = "$red";
       "$accentAlpha" = "$flamingoAlpha";
-      "$font" = "JetBrainsMono Nerd Font";
+      "$defaultFont" = "JetBrainsMono Nerd Font";
+      "$altFont" = "RobotoMono Nerd Font";
       "$mainMonitor" = "eDP-1";
 
       general = {
@@ -26,74 +27,101 @@
           color = "$base";
         }
       ];
-
-      label = [
-        # Layout
-        {
-          monitor = "$mainMonitor";
-          text = "Layout: $LAYOUT";
-          color = "$text";
-          font_size = 25;
-          font_family = "$font";
-          position = "30, -30";
-          halign = "left";
-          valign = "top";
-        }
-        # Time
-        {
-          monitor = "$mainMonitor";
-          text = "$TIME";
-          color = "$text";
-          font_size = 90;
-          font_family = "$font";
-          position = "-30, 0";
-          halign = "right";
-          valign = "top";
-        }
-        # Date
-        {
-          monitor = "$mainMonitor";
-          text = "cmd[update:43200000] date +\"%A, %d %B %Y\"";
-          color = "$text";
-          font_size = 25;
-          font_family = "$font";
-          position = "-30, -150";
-          halign = "right";
-          valign = "top";
-        }
-      ];
-
       image = [
+        # Portrait
         {
           monitor = "$mainMonitor";
           path = "${vars.portrait}";
-          size = 100;
-          border_color = "$accent";
-          position = "0, 75";
+          border_size = 2;
+          border_color = "rgba(255, 255, 255, 0)";
+          size = 130;
+          rounding = -1;
+          rotate = 0;
+          position = "0, 40";
           halign = "center";
           valign = "center";
         }
       ];
 
+      shape = [
+        # Userbox
+        {
+          monitor = "$mainMonitor";
+          size = "300, 60";
+          color = "rgba(255, 255, 255, .1)";
+          rounding = -1;
+          border_size = 0;
+          border_color = "rgba(253, 198, 135, 0)";
+          rotate = 0;
+          xray = false; # if true, make a "hole" in the background (rectangle of specified size, no rotation)
+          position = "0, -130";
+          halign = "center";
+          valign = "center";
+        }
+      ];
+    
+      label = [
+        # Date
+        {
+          monitor = "$mainMonitor";
+          text = "cmd[update:1000] echo -e \"$(date +\"%A, %B %d\")\"";
+          color = "rgba(216, 222, 233, 0.70)";
+          font_size = 25;
+          font_family = "RobotoMono Nerd Font";
+          position = "0, 350";
+          halign = "center";
+          valign = "center";
+        }
+    
+        # Time
+        {
+          monitor = "$mainMonitor";
+          text = "cmd[update:1000] echo \"<span>$(date +\"%I:%M\")</span>\"";
+          color = "rgba(216, 222, 233, 0.70)";
+          font_size = 120;
+          font_family = "RobotoMono Nerd Font";
+          position = "0, 250";
+          halign = "center";
+          valign = "center";
+        }
+
+        # Username
+        {
+          monitor = "$mainMonitor";
+          text = "  $USER";
+          color = "rgba(216, 222, 233, 0.80)";
+          outline_thickness = 2;
+          dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8
+          dots_spacing = 0.2; # Scale of dots' absolute size, 0.0 - 1.0
+          dots_center = true;
+          font_size = 18;
+          font_family = "RobotoMono Nerd Font";
+          position = "0, -130";
+          halign = "center";
+          valign = "center";
+        }
+      ];
+    
       input-field = [
         {
           monitor = "$mainMonitor";
           size = "300, 60";
-          outline_thickness = 4;
-          dots_size = "0.2";
-          dots_spacing = "0.2";
+          outline_thickness = 0;
+          dots_size = 0.2;
+          dots_spacing = 0.2;
           dots_center = true;
-          outer_color = "$accent";
-          inner_color = "$surface0";
-          font_color = "$text";
-          fade_on_empty = false;
-          placeholder_text = "<span foreground=\"##$textAlpha\">󰌾  Logged in as <span foreground=\"##$accentAlpha\">$USER</span></span>";
-          hide_input = false;
-          check_color = "$accent";
+          outer_color = "rgba(0, 0, 0, 0)";
+          inner_color = "rgba(255, 255, 255, 0.1)";
+          font_color = "rgb(200, 200, 200)";
+          swap_font_color = true;
+          check_color = "$flamingo";
           fail_color = "$red";
-          fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-          capslock_color = "$yellow";
-          position = "0, -47";
+          fade_on_empty = false;
+          font_family = "RobotoMono Nerd Font";
+          placeholder_text = "<span foreground=\"##ffffff99\">  Password</span>";
+          fail_text = "<span>$FAIL</span>";
+          hide_input = false;
+          position = "0, -210";
           halign = "center";
           valign = "center";
         }
