@@ -41,6 +41,9 @@
     # Logout Screen
     ./utils/wlogout.nix
 
+    # CLI utilities
+    ./utils/cli.nix
+
     # Editor
     ./editor/nvim/nvim.nix
 

@@ -1,9 +1,30 @@
-{pkgs, ...}:
+{pkgs, lib, ...}:
  
-let 
+let
   hyprland_deps = with pkgs; [
     brightnessctl
     playerctl
+  ];
+
+  popup_windows = [
+    "iwgtk"
+    "pavucontrol"
+    "blueman"
+    "thunar"
+    "imv"
+    "mpv"
+  ];
+
+  general_popups = [
+    "thunar"
+    "imv"
+    "mpv"
+  ];
+
+  anchor_top_right = [
+    "iwgtk"
+    "pavucontrol"
+    "blueman"
   ];
 in {
   home.packages = hyprland_deps;
@@ -147,16 +168,15 @@ in {
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
         "float, class:($cbmanager)"
-        "size 622 652, class:($cbmanager)"
-        "float, class:(iwgtk|pavucontrol|blueman)"
-        "move onscreen 100%-w-20 5%, class:(iwgtk|pavucontrol|blueman)"
-        "size 500 652, class:(iwgtk|pavucontrol|blueman)"
+        "float, class:(${lib.strings.concatStringsSep "|" popup_windows})"
+        "size 1280 720, class:(${lib.strings.concatStringsSep "|" general_popups})"
+        "move onscreen 100%-w-20 5%, class:(${lib.strings.concatStringsSep "|" anchor_top_right})"
+        "size 500 652, class:(${lib.strings.concatStringsSep "|" anchor_top_right})"
       ];
 
       exec-once = [
         "waybar"
         "hyprctl setcursor catppuccin-mocha-dark-cursors 32"
-        #"hyprpaper"
         "hypridle"
         "hyprlock"
       ];

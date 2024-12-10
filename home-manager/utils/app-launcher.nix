@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       main = {
-        terminal = "alacritty";
+        terminal = "kitty";
         font = "JetBrainsMono Nerd Font:size=14";
         prompt = "\"  \"";
       };
