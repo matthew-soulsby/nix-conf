@@ -205,7 +205,10 @@ in {
 
         network = {
           interval = 1;
-          tooltip-format = "{essid}: {ipaddr}";
+          tooltip-format = "{ifname} - Connected";
+          tooltip-format-wifi = "{essid}: {ipaddr}";
+          tooltip-format-ethernet = "{ifname}: {ipaddr}";
+          tooltip-format-disconnected = "{ifname} - Disconnected";
           format-disconnected = "⚠";
           format-ethernet = "";
           format-linked = "󰌘";
