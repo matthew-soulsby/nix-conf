@@ -22,6 +22,14 @@ in {
         gaps_out = 10;
       };
 
+      input = {
+        touchpad = {
+          natural_scroll = true;
+          clickfinger_behavior = true;
+          scroll_factor = 0.4;
+        };
+      };
+
       decoration = {
         rounding = 10;
         blur = {
