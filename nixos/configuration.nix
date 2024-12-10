@@ -221,8 +221,11 @@
       initialPassword = "password";
       isNormalUser = true;
       extraGroups = ["networkmanager" "wheel" "audio"];
+      shell = pkgs.zsh;
     };
   };
+
+  programs.zsh.enable = true;
   
   fonts = {
     packages = with pkgs; [
