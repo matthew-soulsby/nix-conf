@@ -29,6 +29,9 @@
     # Terminal
     ./term/kitty.nix
 
+    # ZSH Shell
+    ./shell/zsh.nix
+
     # File Managers
     ./utils/file-manager.nix
 
