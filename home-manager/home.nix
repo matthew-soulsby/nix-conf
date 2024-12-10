@@ -26,6 +26,9 @@
     # Clipboard
     ./utils/clipse.nix
 
+    # Terminal
+    ./term/kitty.nix
+
     # File Managers
     ./utils/file-manager.nix
 
@@ -80,8 +83,6 @@
 
   programs = {
     home-manager.enable = true;
-    kitty.enable = true;
-    alacritty.enable = true;
   };
 
   gtk = {

@@ -33,8 +33,8 @@ in {
       };
 
       # Binds
-      "$terminal" = "alacritty";
       "$mod" = "SUPER";
+      "$terminal" = "kitty";
       "$browser" = "firefox";
       "$cbmanager" = "clipse";
       "$launcher" = "fuzzel";
@@ -148,7 +148,7 @@ in {
       exec-once = [
         "waybar"
         "hyprctl setcursor catppuccin-mocha-dark-cursors 32"
-        "hyprpaper"
+        #"hyprpaper"
         "hypridle"
         "hyprlock"
       ];

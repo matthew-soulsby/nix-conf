@@ -11,6 +11,7 @@
       "$accent" = "$mauve";
       "$accentAlpha" = "$mauveAlpha";
       "$font" = "JetBrainsMono Nerd Font";
+      "$mainMonitor" = "eDP-1";
 
       general = {
         disable_loading_bar = true;
@@ -20,8 +21,8 @@
         {
           monitor = "";
           path = "${../../assets/landscape_rainworld.png}";
-          blur_passes = 1;
-          blur_size = 8;
+          blur_passes = 3;
+          blur_size = 3;
           color = "$base";
         }
       ];
@@ -29,7 +30,7 @@
       label = [
         # Layout
         {
-          monitor = "";
+          monitor = "$mainMonitor";
           text = "Layout: $LAYOUT";
           color = "$text";
           font_size = 25;
@@ -40,7 +41,7 @@
         }
         # Time
         {
-          monitor = "";
+          monitor = "$mainMonitor";
           text = "$TIME";
           color = "$text";
           font_size = 90;
@@ -51,7 +52,7 @@
         }
         # Date
         {
-          monitor = "";
+          monitor = "$mainMonitor";
           text = "cmd[update:43200000] date +\"%A, %d %B %Y\"";
           color = "$text";
           font_size = 25;
@@ -64,7 +65,7 @@
 
       image = [
         {
-          monitor = "";
+          monitor = "$mainMonitor";
           path = "${../../assets/hyprlock/face.png}";
           size = 100;
           border_color = "$accent";
@@ -76,7 +77,7 @@
 
       input-field = [
         {
-          monitor = "";
+          monitor = "$mainMonitor";
           size = "300, 60";
           outline_thickness = 4;
           dots_size = "0.2";
