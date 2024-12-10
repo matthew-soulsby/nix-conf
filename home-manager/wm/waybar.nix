@@ -218,9 +218,22 @@ in {
           format-off = "󰂲";
           format-disabled = "󰂲";
           format-connected = "󰂱";
+          format-icons = [
+            "󰤾"
+            "󰤿"
+            "󰥀"
+            "󰥁"
+            "󰥂"
+            "󰥃"
+            "󰥄"
+            "󰥅"
+            "󰥆"
+            "󰥈"
+          ];
           tooltip-format = "Bluetooth {status}";
-          tooltip-format-connected = "{device_enumerate}";
-          tooltip-format-enumerate-connected = "{device_alias}\t{device_battery_percentage}%";
+          tooltip-format-connected = "Bluetooth {status}\n\n{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}";
+          tooltip-format-enumerate-connected-battery = "{device_alias}\t{icon} {device_battery_percentage}%";
           on-click = "blueman-manager";
         };
 
