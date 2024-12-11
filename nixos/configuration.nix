@@ -226,6 +226,11 @@
   };
 
   programs.zsh.enable = true;
+
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-curses;
+  };
   
   fonts = {
     packages = with pkgs; [
