@@ -48,6 +48,9 @@
     # CLI utilities
     ./utils/cli.nix
 
+    # Passwords
+    ./utils/pass.nix
+
     # Editor
     ./editor/nvim/nvim.nix
 
