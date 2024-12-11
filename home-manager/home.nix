@@ -31,6 +31,7 @@
 
     # ZSH Shell
     ./shell/zsh.nix
+    ./shell/tmux.nix
 
     # File Managers
     ./utils/file-manager.nix
