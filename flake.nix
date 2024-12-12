@@ -52,7 +52,7 @@
           inherit inputs outputs;
           vars = {
             wallpaper = ./assets/wallpapers/catppuccin/mocha/orb-catppuccin-mocha.png;
-            portrait = ./assets/portraits/catppuccin.png;
+            portrait = ./assets/portraits/ai-small-body.jpg;
           };
         };
         # > Our main home-manager configuration file <

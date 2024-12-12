@@ -1,6 +1,10 @@
 {pkgs, ...}:
 
 {
+  home.packages = with pkgs; [
+    pinentry-qt
+  ];
+
   programs.gpg = {
     enable = true;
     settings = {
@@ -10,6 +14,7 @@
 
   services.gpg-agent = {
     enable = true;
+    pinentryPackage = pkgs.pinentry-qt;
   };
 
   programs.password-store = {

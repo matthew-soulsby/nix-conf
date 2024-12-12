@@ -35,7 +35,7 @@
           path = "${vars.portrait}";
           border_size = 2;
           border_color = "rgba(255, 255, 255, 0)";
-          size = 130;
+          size = 165;
           rounding = -1;
           rotate = 0;
           position = "0, 40";

@@ -1,4 +1,4 @@
-{...}:
+{pkgs, config, ...}:
 
 let
   extension = shortId: uuid: {
@@ -14,8 +14,19 @@ let
     Status = "locked";
   };
 in {
+  home.file.passff-host-workaround = {
+    target =
+      "${config.home.homeDirectory}/.mozilla/native-messaging-hosts/passff.json";
+    source = "${pkgs.passff-host}/share/passff-host/passff.json";
+  };
+
   programs.firefox = {
     enable = true;
+
+    nativeMessagingHosts = with pkgs; [
+      #passff-host
+    ];
+
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
@@ -39,6 +50,7 @@ in {
       ExtensionSettings = builtins.listToAttrs [
         (extension "ublock-origin" "uBlock0@raymondhill.net")
         (extension "tridactyl-vim" "tridactyl.vim@cmcaine.co.uk")
+        (extension "passff" "passff@invicem.pro")
       ];
     };
   };
