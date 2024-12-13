@@ -65,7 +65,7 @@ in {
       "$mod" = "SUPER";
       "$terminal" = "kitty";
       "$browser" = "firefox";
-      "$cbmanager" = "clipse";
+      "$cbmanager" = "cliphist";
       "$launcher" = "fuzzel";
 
       monitor = [
@@ -89,7 +89,7 @@ in {
         "$mod, Q, killactive,"
         "$mod, E, togglefloating,"
         "$mod, C, togglesplit,"
-        "$mod, V, exec, $terminal --class clipse -e clipse"
+        "$mod, V, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy" 
         "$mod, R, exec, $launcher" 
 
         # Toggle fullscreen
@@ -178,6 +178,7 @@ in {
         "waybar"
         "hyprctl setcursor catppuccin-mocha-dark-cursors 32"
         "hypridle"
+        "wl-paste --type text --watch cliphist store"
         "hyprlock"
       ];
     };

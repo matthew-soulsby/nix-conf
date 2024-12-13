@@ -24,7 +24,7 @@
     ./browser/firefox.nix
 
     # Clipboard
-    ./utils/clipse.nix
+    ./utils/clipboard.nix
 
     # Terminal
     ./term/kitty.nix
