@@ -39,6 +39,9 @@
     # App Launcher
     ./utils/app-launcher.nix
 
+    # Notifications
+    ./utils/swaync.nix
+
     # Network Manager
     ./utils/iwgtk.nix
 
