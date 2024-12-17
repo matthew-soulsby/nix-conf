@@ -2,7 +2,9 @@
 
 let
   waybarDeps = with pkgs; [
-    pavucontrol
+    pwvucontrol
+    wireplumber
+    blueberry
   ];
 in {
   home.packages = waybarDeps;
@@ -63,6 +65,7 @@ in {
       #clock,
       #battery,
       #pulseaudio,
+      #wireplumber,
       #bluetooth,
       #network,
       #custom-lock,
@@ -106,7 +109,8 @@ in {
         color: @mauve;
       }
       
-      #pulseaudio {
+      #pulseaudio,
+      #wireplumber {
         color: @maroon;
         border-radius: 1rem 0px 0px 1rem;
         margin-left: 1rem;
@@ -146,7 +150,7 @@ in {
           "hyprland/window"
         ];
         modules-right = [ 
-          "pulseaudio"
+          "wireplumber"
           "battery"
           "network"
           "bluetooth"
@@ -203,6 +207,17 @@ in {
           on-click = "pavucontrol";
         };
 
+        "wireplumber" = {
+          format = "{icon}  {volume}%";
+          format-muted = "  ";
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
+          on-click = "pwvucontrol";
+        };
+
         network = {
           interval = 1;
           tooltip-format = "{ifname} - Connected";
@@ -237,7 +252,7 @@ in {
           tooltip-format-connected = "Bluetooth {status}\n\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}";
           tooltip-format-enumerate-connected-battery = "{device_alias}\t{icon} {device_battery_percentage}%";
-          on-click = "blueman-manager";
+          on-click = "blueberry";
         };
 
         "battery" = {
