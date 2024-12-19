@@ -22,5 +22,8 @@
     package = pkgs.pass.withExtensions (exts: [
       exts.pass-import
     ]);
+    settings = {
+      PASSWORD_STORE_DIR = "$HOME/.password-store";
+    };
   };
 }

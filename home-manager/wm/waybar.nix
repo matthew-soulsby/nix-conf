@@ -223,7 +223,7 @@ in {
           tooltip-format = "{ifname} - Connected";
           tooltip-format-wifi = "{essid}: {ipaddr}";
           tooltip-format-ethernet = "{ifname}: {ipaddr}";
-          tooltip-format-disconnected = "{ifname} - Disconnected";
+          tooltip-format-disconnected = "Disconnected";
           format-disconnected = "⚠";
           format-ethernet = "";
           format-linked = "󰌘";
