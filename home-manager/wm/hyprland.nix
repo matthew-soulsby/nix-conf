@@ -80,7 +80,7 @@ in {
         "$mod, Q, killactive,"
         "$mod, E, togglefloating,"
         "$mod, C, togglesplit,"
-        "$mod, V, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy" 
+        "$mod, V, exec, cliphist list | $launcher --dmenu | cliphist decode | wl-copy" 
         "$mod, R, exec, $launcher" 
 
         # Toggle fullscreen
