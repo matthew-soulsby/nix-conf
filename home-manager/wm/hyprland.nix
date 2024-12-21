@@ -7,7 +7,7 @@ let
   ];
 
   popups_middle = [
-    "thunar"
+    "Thunar"
     "imv"
     "mpv"
   ];
