@@ -46,26 +46,30 @@ active=""
 urgent=""
 if [[ $status = *"Charging"* ]]; then
     active="-a 1"
-    ICON_CHRG=""
+    ICON_CHRG="󰢝"
 elif [[ $status = *"Full"* ]]; then
     active="-u 1"
-    ICON_CHRG=""
+    ICON_CHRG="󰂅"
 else
     urgent="-u 1"
-    ICON_CHRG=""
+    ICON_CHRG="󰂃"
 fi
 
 # Discharging
-if [[ $percentage -ge 5 ]] && [[ $percentage -le 19 ]]; then
-    ICON_DISCHRG=""
+if [[ $percentage -le 4 ]]; then
+    ICON_DISCHRG="󰂃"
+elif [[ $percentage -ge 5 ]] && [[ $percentage -le 19 ]]; then
+    ICON_DISCHRG="󰁺"
 elif [[ $percentage -ge 20 ]] && [[ $percentage -le 39 ]]; then
-    ICON_DISCHRG=""
+    ICON_DISCHRG="󰁼"
 elif [[ $percentage -ge 40 ]] && [[ $percentage -le 59 ]]; then
-    ICON_DISCHRG=""
+    ICON_DISCHRG="󰁾"
 elif [[ $percentage -ge 60 ]] && [[ $percentage -le 79 ]]; then
-    ICON_DISCHRG=""
-elif [[ $percentage -ge 80 ]] && [[ $percentage -le 100 ]]; then
-    ICON_DISCHRG=""
+    ICON_DISCHRG="󰂀"
+elif [[ $percentage -ge 80 ]] && [[ $percentage -le 99 ]]; then
+    ICON_DISCHRG="󰂂"
+elif [[ $percentage -eq 100 ]]; then
+    ICON_DISCHRG="󰁹"
 fi
 
 # Options
@@ -76,15 +80,15 @@ if [[ "$layout" == 'NO' ]]; then
 	option_3=" Power Manager"
 	option_4=" Diagnose"
 else
-	option_1="$ICON_DISCHRG"
-	option_2="$ICON_CHRG"
-	option_3=""
-	option_4=""
+	option_1="󱈏"
+	option_2=""
+	option_3=""
+	option_4=""
 fi
 
 # Rofi CMD
 rofi_cmd() {
-	rofi -theme-str "window {width: $win_width;}" \
+	rofi -theme-str "window {width: $win_width; location: north east; anchor: north east; x-offset: -5px; y-offset: 5px;}" \
 		-theme-str "listview {columns: $list_col; lines: $list_row;}" \
 		-theme-str "textbox-prompt-colon {str: \"$ICON_DISCHRG\";}" \
 		-dmenu \
@@ -104,9 +108,9 @@ run_rofi() {
 run_cmd() {
 	polkit_cmd="pkexec env PATH=$PATH DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY"
 	if [[ "$1" == '--opt1' ]]; then
-		notify-send -u low " Remaining : ${percentage}%"
+		notify-send -u low -a Battery "Battery" "Remaining: $ICON_DISCHRG ${percentage}%"
 	elif [[ "$1" == '--opt2' ]]; then
-		notify-send -u low "$ICON_CHRG Status : $status"
+		notify-send -u low -a Battery "Battery" "Status: $ICON_CHRG $status"
 	elif [[ "$1" == '--opt3' ]]; then
 		xfce4-power-manager-settings
 	elif [[ "$1" == '--opt4' ]]; then

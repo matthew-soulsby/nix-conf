@@ -188,6 +188,7 @@ in {
           format = ''  {:L%I:%M %p}'';
           tooltip = true;
           tooltip-format = "<big>{:%A, %d %B %Y }</big>\n<tt><small>{calendar}</small></tt>";
+          on-click = "swaync-client -t -sw";
         };
 
         "pulseaudio" = {
@@ -276,6 +277,7 @@ in {
             "󰁹"
           ];
           tooltip = true;
+          on-click = "~/.config/rofi/applets/bin/battery.sh";
         };
 
         "custom/lock" = {
