@@ -81,7 +81,7 @@ in {
         "$mod, E, togglefloating,"
         "$mod, C, togglesplit,"
         "$mod, V, exec, cliphist list | $launcher --dmenu | cliphist decode | wl-copy" 
-        "$mod, R, exec, $launcher" 
+        "$mod, R, exec, ~/.config/rofi/launchers/type-1/launcher.sh" 
 
         # Toggle fullscreen
         "$mod SHIFT, F, fullscreen, 0"
@@ -152,6 +152,7 @@ in {
       layerrule = [
         "blur, waybar"
         "blur, logout_dialog"
+        "dimaround, rofi"
       ];
 
       windowrule = [];

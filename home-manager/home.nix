@@ -38,6 +38,7 @@
 
     # App Launcher
     ./utils/app-launcher.nix
+    ./rofi/rofi.nix
 
     # Notifications
     ./utils/swaync.nix

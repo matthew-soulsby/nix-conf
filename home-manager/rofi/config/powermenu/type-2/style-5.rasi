@@ -24,12 +24,12 @@ USE_BUTTONS=YES
 window {
     /* properties for window widget */
     transparency:                "real";
-    location:                    west;
-    anchor:                      west;
+    location:                    north east;
+    anchor:                      north east;
     fullscreen:                  false;
     width:                       115px;
-    x-offset:                    15px;
-    y-offset:                    0px;
+    x-offset:                    -5px;
+    y-offset:                    5px;
 
     /* properties for all widgets */
     enabled:                     true;
@@ -148,7 +148,7 @@ element {
     enabled:                     true;
     spacing:                     0px;
     margin:                      0px;
-    padding:                     20px 0px;
+    padding:                     20px 10px 20px 0px;
     border:                      0px solid;
     border-radius:               100%;
     border-color:                @selected;

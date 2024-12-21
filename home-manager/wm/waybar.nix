@@ -286,7 +286,7 @@ in {
 
         "custom/power" = {
           tooltip = false;
-          on-click = "wlogout &";
+          on-click = "~/.config/rofi/powermenu/type-2/powermenu.sh";
           format = "";
         };
       }
