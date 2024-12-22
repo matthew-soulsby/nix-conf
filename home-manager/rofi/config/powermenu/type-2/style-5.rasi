@@ -28,16 +28,16 @@ window {
     anchor:                      north east;
     fullscreen:                  false;
     width:                       115px;
-    x-offset:                    -5px;
-    y-offset:                    5px;
+    x-offset:                    -15px;
+    y-offset:                    15px;
 
     /* properties for all widgets */
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
+    border:                      1px solid;
     border-radius:               12px;
-    border-color:                @selected;
+    border-color:                @surface-0;
     cursor:                      "default";
     background-color:            @background;
 }

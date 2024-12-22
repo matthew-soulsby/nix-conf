@@ -88,7 +88,7 @@ fi
 
 # Rofi CMD
 rofi_cmd() {
-	rofi -theme-str "window {width: $win_width; location: north east; anchor: north east; x-offset: -5px; y-offset: 5px;}" \
+	rofi -theme-str "window {width: $win_width; location: north east; anchor: north east; x-offset: -15px; y-offset: 15px;}" \
 		-theme-str "listview {columns: $list_col; lines: $list_row;}" \
 		-theme-str "textbox-prompt-colon {str: \"$ICON_DISCHRG\";}" \
 		-dmenu \
