@@ -2,10 +2,11 @@ local language_servers = {
     "lua_ls",       -- Lua
     "pyright",      -- Python
     "dockerls",     -- Docker
-    "zls",          -- Zig
+--    "zls",          -- Zig
     "ts_ls",        -- JS/TS
     "volar",        -- Vue
 }
+
 
 return {
     {
@@ -23,6 +24,9 @@ return {
         }
     },
     {
+        "Hoffs/omnisharp-extended-lsp.nvim"
+    },
+    {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
@@ -34,6 +38,30 @@ return {
                 })
             end
 
+            lspconfig.zls.setup({
+                capabilities = capabilities
+            })
+
+            lspconfig["omnisharp"].setup({
+                capabilities = capabilities,
+                --on_attach = on_attach,
+                cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+                handlers = {
+                    ["textDocument/definition"] = require("omnisharp_extended").handler,
+                },
+                enable_editorconfig_support = true,
+                enable_ms_build_load_projects_on_demand = false,
+                enable_roslyn_analyzers = true,
+                organize_imports_on_format = true,
+                enable_import_completion = true,
+                sdk_include_prereleases = true,
+                analyze_open_documents_only = true,
+                settings = {
+                    FormattingOptions = {
+                        EnableEditorConfigSupport = true,
+                    },
+                },
+            })
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),

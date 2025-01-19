@@ -155,7 +155,9 @@ in {
         "dimaround, rofi"
       ];
 
-      windowrule = [];
+      windowrule = [
+        "float, title:^(DEBUG)"
+      ];
       windowrulev2 = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"

@@ -60,6 +60,7 @@
 
     # Apps
     ./apps/git.nix
+    ./apps/discord.nix
   ];
 
   nixpkgs = {

@@ -8,7 +8,8 @@ return {
                 ensure_installed = {
                     "lua",
                     "python",
-                    "zig"
+                    "zig",
+                    "css"
                 },
                 sync_install = false,
                 highlight = { enable = true },
