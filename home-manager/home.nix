@@ -45,6 +45,7 @@
 
     # Network Manager
     ./utils/iwgtk.nix
+    ./utils/network-manager.nix
 
     # Logout Screen
     ./utils/wlogout.nix

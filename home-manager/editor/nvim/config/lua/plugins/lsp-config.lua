@@ -31,6 +31,9 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            local autoformat_files = {
+                "*.cs"
+            }
 
             for _, language_server in ipairs(language_servers) do
                 lspconfig[language_server].setup({
@@ -76,6 +79,14 @@ return {
                         vim.lsp.buf.format { async = true }
                     end, opts)
                 end,
+            })
+
+            vim.api.nvim_create_autocmd('BufWritePost', {
+                group = vim.api.nvim_create_augroup('FormatAutogroup', {}),
+                pattern = autoformat_files,
+                callback = function()
+                    vim.lsp.buf.format()
+                end
             })
         end
     }

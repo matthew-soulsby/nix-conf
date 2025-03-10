@@ -98,9 +98,10 @@
   };
 
   # Enable networking
-  #networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true;
+
   systemd.network = {
-    enable = true;
+    enable = false;
 
     wait-online = {
       enable = false;
@@ -153,9 +154,9 @@
 
   networking = {
     hostName = "nix-laptop";
-    useNetworkd = true;
+    useNetworkd = false;
     wireless.iwd = {
-      enable = true;
+      enable = false;
       settings = {
         IPv6 = {
           Enabled = true;
