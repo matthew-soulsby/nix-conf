@@ -1,6 +1,10 @@
 {vars, ...}:
 
 {
+  catppuccin.hyprlock = {
+    useDefaultConfig = false;
+  };
+
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -10,7 +14,7 @@
 
       "$accent" = "$red";
       "$accentAlpha" = "$flamingoAlpha";
-      "$font" = "JetBrainsMono Nerd Font";
+      "$font" = vars.fonts.names.sans-serif;
       "$mainMonitor" = "eDP-1";
 
       general = {
@@ -102,7 +106,7 @@
           valign = "center";
         }
       ];
-    
+
       input-field = [
         {
           monitor = "$mainMonitor";

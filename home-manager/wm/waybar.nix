@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, vars, ...}:
 
 let
   waybarDeps = with pkgs; [
@@ -14,7 +14,7 @@ in {
       ${builtins.readFile ../../assets/waybar/mocha.css}
       
       * {
-        font-family: JetBrainsMono Nerd Font;
+        font-family: ${vars.fonts.names.serif};
         font-size: 14px;
         min-height: 0;
       }
@@ -39,14 +39,12 @@ in {
         border-radius: 1rem;
         margin: 5px;
         background-color: @surface0;
-        margin-left: 1rem;
       }
       
       #workspaces button {
         color: @lavender;
         border-radius: 1rem;
         padding: 0.4rem;
-        padding-right: 0.6rem;
       }
       
       #workspaces button.active {
@@ -124,6 +122,8 @@ in {
       #custom-lock {
           border-radius: 1rem 0px 0px 1rem;
           color: @lavender;
+          padding-right: 0.5rem;
+          padding-left: 1.2rem;
       }
       
       #custom-power {
@@ -228,7 +228,7 @@ in {
           format-disconnected = "⚠";
           format-ethernet = "";
           format-linked = "󰌘";
-          format-wifi = "  {signalStrength}%";
+          format-wifi = "   {signalStrength}%";
           on-click = "iwgtk";
         };
 

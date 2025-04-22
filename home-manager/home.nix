@@ -5,6 +5,7 @@
   lib,
   config,
   pkgs,
+  vars,
   ...
 }: {
   # You can import other home-manager modules here
@@ -47,9 +48,6 @@
     ./utils/iwgtk.nix
     ./utils/network-manager.nix
 
-    # Logout Screen
-    ./utils/wlogout.nix
-
     # CLI utilities
     ./utils/cli.nix
 
@@ -58,6 +56,9 @@
 
     # Editor
     ./editor/nvim/nvim.nix
+
+    # Fonts
+    ./utils/fonts.nix
 
     # Apps
     ./apps/git.nix
@@ -103,7 +104,7 @@
 
   gtk = {
     enable = true;
-    font.name = "RobotoMono Nerd Font 18";
+    font.name = vars.fonts.names.serif;
     theme = {
       name = "Catppuccin-GTK-Purple-Dark";
       package = pkgs.magnetic-catppuccin-gtk.override {

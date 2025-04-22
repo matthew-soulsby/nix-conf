@@ -11,7 +11,7 @@
     };
 
     editor = {
-      terminal = "alacritty";
+      terminal = "kitty";
     };
   };
 }

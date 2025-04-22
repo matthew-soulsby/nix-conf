@@ -1,16 +1,17 @@
 {pkgs, ...}:
 
 {
-  programs.tmux = {
-    enable = true;
-    catppuccin.extraConfig = ''
+  catppuccin.tmux.extraConfig = ''
       set -g @catppuccin_status_background "#{@thm_bg}"
       set -g @catppuccin_window_default_text " #W  "
       set -g @catppuccin_window_current_text " #W  "
       set -g @catppuccin_window_status "none"
       set -g @catppuccin_window_number_position "right"
       set -g @catppuccin_window_status_style "rounded"
-    '';
+  '';
+
+  programs.tmux = {
+    enable = true;
 
     baseIndex = 1;
     prefix = "C-s";

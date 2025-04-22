@@ -1,4 +1,4 @@
-{pkgs, config, ...}:
+{pkgs, config, vars, ...}:
 
 let
   extension = shortId: uuid: {
@@ -22,6 +22,27 @@ in {
 
   programs.firefox = {
     enable = true;
+
+    # Configure the "default" profile
+    profiles.default = {
+      # (Optional) give it a human‑readable name, if you like:
+      name = "default";
+      isDefault = true;
+      id = 0;
+
+      # Here we override all the default fonts for Western scripts
+      settings = {
+        # 0 = serif, 1 = sans‑serif, 2 = monospace, etc.
+        "font.default.x-western"        = 1;
+        # Choose your preferred serif/sans‑serif/monospace fonts
+        "font.name.serif.x-western"     = vars.fonts.names.serif;
+        "font.name.sans-serif.x-western"= vars.fonts.names.sans-serif;
+        "font.name.monospace.x-western" = vars.fonts.names.mono;
+        # Font sizes (in pixels)
+        "font.size.variable.x-western"  = 16;
+        "font.minimum-size.x-western"   = 10;
+      };
+    };
 
     nativeMessagingHosts = with pkgs; [
       #passff-host
@@ -49,7 +70,7 @@ in {
       # Add extensions
       ExtensionSettings = builtins.listToAttrs [
         (extension "ublock-origin" "uBlock0@raymondhill.net")
-        (extension "tridactyl-vim" "tridactyl.vim@cmcaine.co.uk")
+        #(extension "tridactyl-vim" "tridactyl.vim@cmcaine.co.uk")
         (extension "passff" "passff@invicem.pro")
       ];
     };
