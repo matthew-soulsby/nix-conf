@@ -213,6 +213,7 @@
     git
     home-manager
     kitty
+    networkmanagerapplet
   ];
 
   users.users = {
