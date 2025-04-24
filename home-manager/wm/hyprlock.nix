@@ -14,7 +14,7 @@
 
       "$accent" = "$red";
       "$accentAlpha" = "$flamingoAlpha";
-      "$font" = vars.fonts.names.sans-serif;
+      "$font" = vars.fonts.names.mono;
       "$mainMonitor" = "eDP-1";
 
       general = {

@@ -17,6 +17,7 @@ in {
         font-family: ${vars.fonts.names.serif};
         font-size: 14px;
         min-height: 0;
+        transition: all 0.2s ease-in-out;
       }
       
       #waybar {
@@ -33,6 +34,17 @@ in {
         margin-left: 1rem;
         padding-left: 1rem;
         padding-right: 1.1rem;
+      }
+
+      #window.empty {
+        opacity: 0.0;
+        min-width: 0;
+        padding: 0;
+        margin: 0;
+      }
+
+      window#waybar.empty #window {
+        opacity: 0.0;
       }
 
       #workspaces {
@@ -172,11 +184,9 @@ in {
         "hyprland/window" = {
           max-length = 30;
           separate-outputs = false;
+          tooltip = true;
           icon = true;
           icon-size = 18;
-          rewrite = {
-            "" = "󱄅";
-          };
         };
 
         "tray" = {
@@ -229,7 +239,7 @@ in {
           format-ethernet = "";
           format-linked = "󰌘";
           format-wifi = "   {signalStrength}%";
-          on-click = "iwgtk";
+          on-click = "nm-connection-editor";
         };
 
         "bluetooth" = {

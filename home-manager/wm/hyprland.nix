@@ -7,7 +7,7 @@ let
   ];
 
   popups_middle = [
-    "Thunar"
+    "thunar"
     "imv"
     "mpv"
   ];
@@ -16,6 +16,7 @@ let
     "iwgtk"
     "pwvucontrol"
     "blueberry"
+    "nm-connection-editor"
   ];
 in {
   home.packages = hyprland_deps;
@@ -50,6 +51,11 @@ in {
           passes = 1;
         };
         inactive_opacity = 0.8;
+      };
+
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
       };
 
       # Binds
@@ -173,6 +179,7 @@ in {
         "hypridle"
         "wl-paste --type text --watch cliphist store"
         "hyprlock"
+        "nm-applet --indicator"
       ];
     };
   };
