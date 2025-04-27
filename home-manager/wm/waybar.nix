@@ -49,6 +49,7 @@ in {
       #workspaces {
         border-radius: 1rem;
         margin: 5px;
+        margin-left: 0.8rem;
         background-color: @surface0;
       }
       
@@ -142,7 +143,7 @@ in {
       }
       
       #custom-power {
-          margin-right: 1rem;
+          margin-right: 0.8rem;
           border-radius: 0px 1rem 1rem 0px;
           color: @red;
           padding-right: 1.1rem;
