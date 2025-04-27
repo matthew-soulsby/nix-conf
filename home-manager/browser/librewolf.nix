@@ -8,11 +8,6 @@ let
       installation_mode = "normal_installed";
     };
   };
-
-  lock-value = value: {
-    Value = value;
-    Status = "locked";
-  };
 in {
   home.file.passff-host-workaround = {
     target =
@@ -41,31 +36,23 @@ in {
         "font.size.variable.x-western"  = 16;
         "font.minimum-size.x-western"   = 10;
 
+        # Vertical tabs
         "sidebar.verticalTabs" = true;
         "sidebar.expandOnHover" = true;
         "sidebar.revamp" = true;
         "sidebar.revamp.round-content-area" = true;
+
+        # Allow dark mode requests
+        "privacy.resistFingerprinting" = false;
+        "privacy.fingerprintingProtection" = true;
+        "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme,-JSDateTimeUTC";
+
+        "browser.toolbars.bookmarks.visibility" = "never";
       };
     };
 
-    nativeMessagingHosts = with pkgs; [
-      #passff-host
-    ];
-
     # Don't know if these are required for librewolf, cbs working it out
     policies = {
-      DisableTelemetry = true;
-      DisableFirefoxStudies = true;
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
-      };
-      DisablePocket = true;
-      DisableFirefoxAccounts = true;
-      DisableAccounts = true;
-      DisableFirefoxScreenshots = true;
       SearchBar = "unified";
 
       # Add extensions
