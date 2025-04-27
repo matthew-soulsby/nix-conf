@@ -17,7 +17,6 @@ in {
         font-family: ${vars.fonts.names.serif};
         font-size: 14px;
         min-height: 0;
-        transition: all 0.2s ease-in-out;
       }
       
       #waybar {
@@ -31,9 +30,9 @@ in {
         margin: 5px;
         background-color: @surface0;
         color: @lavender;
-        margin-left: 1rem;
         padding-left: 1rem;
         padding-right: 1.1rem;
+        transition: all 0.2s ease-in-out;
       }
 
       #window.empty {
