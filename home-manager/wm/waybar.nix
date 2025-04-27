@@ -99,6 +99,10 @@ in {
       }
       
       #battery.warning:not(.charging) {
+        color: @yellow;
+      }
+
+      #battery.critical:not(.charging) {
         color: @red;
       }
       
