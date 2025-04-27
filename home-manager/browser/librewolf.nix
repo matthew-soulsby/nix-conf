@@ -20,7 +20,6 @@ in {
 
     # Configure the "default" profile
     profiles.default = {
-      # (Optional) give it a human‑readable name, if you like:
       name = "default";
       isDefault = true;
       id = 0;
