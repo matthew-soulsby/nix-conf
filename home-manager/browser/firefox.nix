@@ -65,6 +65,10 @@ in {
 
       Preferences = {
         "browser.newtab.extensionControlled" = lock-value false;
+        "sidebar.verticalTabs" = lock-value true;
+        "sidebar.expandOnHover" = lock-value true;
+        "sidebar.revamp" = lock-value true;
+        "sidebar.revamp.round-content-area" = lock-value true;
       };
 
       # Add extensions
