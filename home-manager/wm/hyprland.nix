@@ -80,7 +80,7 @@ in {
       # Binds
       "$mod" = "SUPER";
       "$terminal" = "kitty";
-      "$browser" = "firefox";
+      "$browser" = "librewolf";
       "$cbmanager" = "cliphist";
       "$launcher" = "fuzzel";
 

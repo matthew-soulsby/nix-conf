@@ -22,7 +22,7 @@
     ./wm/hyprcursor.nix
 
     # Browser
-    ./browser/firefox.nix
+    ./browser/librewolf.nix
 
     # Clipboard
     ./utils/clipboard.nix
