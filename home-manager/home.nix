@@ -95,6 +95,9 @@
   catppuccin = {
     enable = true;
     flavor = "mocha";
+    gtk.icon = {
+        enable = true;
+    };
   };
 
   programs = {
@@ -109,9 +112,6 @@
       package = pkgs.magnetic-catppuccin-gtk.override {
         accent = [ "purple" ];
       };
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
     };
   };
 
