@@ -2,11 +2,9 @@
 
 {
     fonts.fontconfig.enable = true;
-    home.packages = [
-        (pkgs.nerdfonts.override { fonts = [ 
-            "FiraCode" 
-            "RobotoMono" 
-            "JetBrainsMono"
-        ] ++ builtins.attrValues vars.fonts.packages ;})
-    ];
+    home.packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.fira-code
+      nerd-fonts.roboto-mono
+    ] ++ builtins.map (x: x.package) (builtins.attrValues vars.fonts);
 }

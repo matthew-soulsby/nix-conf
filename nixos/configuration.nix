@@ -202,8 +202,10 @@
     variant = "";
   };
 
-  catppuccin.flavor = "mocha";
-  catppuccin.enable = true;
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -214,6 +216,7 @@
     home-manager
     kitty
     networkmanagerapplet
+    socat
   ];
 
   users.users = {
@@ -235,11 +238,9 @@
   
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ 
-        "FiraCode"
-        "RobotoMono"
-        "JetBrainsMono"
-      ]; })
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.fira-code
+      nerd-fonts.roboto-mono
     ];
     fontconfig.enable = true;
   };

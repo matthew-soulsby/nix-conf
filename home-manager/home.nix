@@ -11,7 +11,6 @@
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
-    inputs.walker.homeManagerModules.default
 
     # Window manager
     ./wm/hyprland.nix
@@ -104,7 +103,7 @@
 
   gtk = {
     enable = true;
-    font.name = vars.fonts.names.serif;
+    font.name = vars.fonts.serif.name;
     theme = {
       name = "Catppuccin-GTK-Purple-Dark";
       package = pkgs.magnetic-catppuccin-gtk.override {
@@ -113,7 +112,6 @@
     };
     iconTheme = {
       name = "Papirus-Dark";
-      package = pkgs.catppuccin-papirus-folders;
     };
   };
 

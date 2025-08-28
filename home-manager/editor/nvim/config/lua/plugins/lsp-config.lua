@@ -11,6 +11,10 @@ local language_servers = {
 return {
     {
         "williamboman/mason.nvim",
+        dependencies = {
+            { "mason-org/mason.nvim", version = "^1.0.0" },
+            { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
+        },
         opts = {
             ui = {
                 border = "rounded"

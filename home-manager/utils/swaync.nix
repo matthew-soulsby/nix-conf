@@ -6,7 +6,7 @@
   ];
 
   catppuccin.swaync = {
-    font = vars.fonts.names.sans-serif;
+    font = vars.fonts.sans-serif.name;
   };
 
   services.swaync = {

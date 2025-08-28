@@ -3,19 +3,16 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     # Home manager
     home-manager = {
-        url = "github:nix-community/home-manager/release-24.11";
+        url = "github:nix-community/home-manager/release-25.05";
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Catppuccin
     catppuccin.url = "github:catppuccin/nix";
-    
-    # Walker App Launcher
-    walker.url = "github:abenz1267/walker";
   };
 
   outputs = {
@@ -47,24 +44,29 @@
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
+    homeConfigurations = let 
+        pkg-src = nixpkgs.legacyPackages.x86_64-linux; 
+    in {
       "mattsoulsby@nix-laptop" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        pkgs = pkg-src; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {
           inherit inputs outputs;
           vars = {
             wallpaper = ./assets/wallpapers/catppuccin/mocha/orb-catppuccin-mocha.png;
             portrait = ./assets/portraits/ai-small-body.jpg;
-            fonts = let 
-                font-packages = {
-                    serif = "Ubuntu";
-                    sans-serif = "UbuntuSans";
-                    mono = "JetBrainsMono";
+            fonts = {
+                serif = {
+                    name = "Ubuntu Nerd Font";
+                    package = pkg-src.nerd-fonts.ubuntu;
                 };
-                font-names = builtins.mapAttrs (name: value: "${value} Nerd Font") font-packages;
-            in {
-                packages = font-packages;
-                names = font-names;
+                sans-serif = {
+                    name = "UbuntuSans Nerd Font";
+                    package = pkg-src.nerd-fonts.ubuntu-sans;
+                };
+                mono = {
+                    name = "JetBrainsMono Nerd Font";
+                    package = pkg-src.nerd-fonts.jetbrains-mono;
+                };
             };
           };
         };

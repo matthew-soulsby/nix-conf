@@ -1,6 +1,8 @@
-{pkgs, lib, ...}:
+{pkgs, lib, config, ...}:
  
 let
+  fullscreen_gaps_script = "${config.home.homeDirectory}/.config/hypr/fullscreen-gaps.sh";
+
   hyprland_deps = with pkgs; [
     brightnessctl
     playerctl
@@ -18,8 +20,18 @@ let
     "blueberry"
     "nm-connection-editor"
   ];
+
+  # Autoload apps in a hidden workspace for faster startups
+  autoload_apps = map (app: "[workspace special:hidden silent] " + app) [
+    "librewolf"
+  ];
 in {
   home.packages = hyprland_deps;
+
+  home.file.fullscreen-gaps = {
+    target = fullscreen_gaps_script;
+    source = ./scripts/fullscreen-gaps.sh;
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -199,7 +211,8 @@ in {
         "wl-paste --type text --watch cliphist store"
         "hyprlock"
         "nm-applet --indicator"
-      ];
+        fullscreen_gaps_script
+      ] ++ autoload_apps;
     };
   };
 }

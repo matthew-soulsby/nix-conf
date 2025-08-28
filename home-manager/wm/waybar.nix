@@ -14,7 +14,7 @@ in {
       ${builtins.readFile ../../assets/waybar/mocha.css}
       
       * {
-        font-family: ${vars.fonts.names.serif};
+        font-family: ${vars.fonts.serif.name};
         font-size: 14px;
         min-height: 0;
       }

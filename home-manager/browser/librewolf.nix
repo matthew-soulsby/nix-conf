@@ -24,13 +24,15 @@ in {
       isDefault = true;
       id = 0;
 
+      extensions.force = true;
+
       # Here we override all the default fonts for Western scripts
       settings = {
         # 0 = serif, 1 = sans‑serif, 2 = monospace, etc.
         "font.default.x-western"        = 1;
-        "font.name.serif.x-western"     = vars.fonts.names.serif;
-        "font.name.sans-serif.x-western"= vars.fonts.names.sans-serif;
-        "font.name.monospace.x-western" = vars.fonts.names.mono;
+        "font.name.serif.x-western"     = vars.fonts.serif.name;
+        "font.name.sans-serif.x-western"= vars.fonts.sans-serif.name;
+        "font.name.monospace.x-western" = vars.fonts.mono.name;
         # Font sizes (in pixels)
         "font.size.variable.x-western"  = 16;
         "font.minimum-size.x-western"   = 10;
