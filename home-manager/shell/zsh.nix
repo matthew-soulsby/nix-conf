@@ -7,7 +7,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initExtra = ''
+    initContent = ''
       if test -z "$TMUX"; then
           tmux
       fi
