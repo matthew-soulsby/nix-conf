@@ -16,8 +16,8 @@ let
 
   popups_top_right = [
     "iwgtk"
-    "pwvucontrol"
-    "blueberry"
+    "com.saivert.pwvucontrol"
+    "blueberry.py"
     "nm-connection-editor"
   ];
 
