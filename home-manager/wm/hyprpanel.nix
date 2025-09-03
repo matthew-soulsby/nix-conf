@@ -52,6 +52,11 @@
                         radius = "0.6em";
                         style = "split";
                     };
+                    menus = {
+                        enableShadow = true;
+                        shadowMargins = "7px 7px";
+                        shadow = "0px 0px 0px 0px #16161e";
+                    };
                 };
             };
         };
