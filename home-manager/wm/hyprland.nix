@@ -188,7 +188,7 @@ in {
 
       layerrule = [
         "blur, waybar"
-        "blur, bar-0"
+        "blur, bar-(.*)"
         "blur, logout_dialog"
         "dimaround, rofi"
       ];
