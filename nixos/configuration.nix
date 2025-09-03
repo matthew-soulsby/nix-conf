@@ -174,7 +174,7 @@
       powerOnBoot = true;
     };
     system76 = {
-      power-daemon.enable = true;
+      power-daemon.enable = false;
     };
   };
 
