@@ -17,8 +17,10 @@
     ./wm/hyprlock.nix
     ./wm/hyprpaper.nix
     ./wm/hypridle.nix
-    ./wm/waybar.nix
     ./wm/hyprcursor.nix
+
+    # Bar
+    ./wm/hyprpanel.nix
 
     # Browser
     ./browser/librewolf.nix
@@ -39,9 +41,6 @@
     # App Launcher
     ./utils/app-launcher.nix
     ./rofi/rofi.nix
-
-    # Notifications
-    ./utils/swaync.nix
 
     # Network Manager
     ./utils/iwgtk.nix

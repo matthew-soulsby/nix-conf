@@ -201,6 +201,7 @@
     layout = "us";
     variant = "";
   };
+  services.upower.enable = true;
 
   catppuccin = {
     enable = true;

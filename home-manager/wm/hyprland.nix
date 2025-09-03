@@ -188,6 +188,7 @@ in {
 
       layerrule = [
         "blur, waybar"
+        "blur, bar-0"
         "blur, logout_dialog"
         "dimaround, rofi"
       ];
@@ -210,7 +211,6 @@ in {
         "hypridle"
         "wl-paste --type text --watch cliphist store"
         "hyprlock"
-        "nm-applet --indicator"
         fullscreen_gaps_script
       ] ++ autoload_apps;
     };
