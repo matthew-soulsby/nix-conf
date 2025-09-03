@@ -25,7 +25,7 @@ handle_event() {
 # subscribe to the socket for activewindowv2 and dispatch to handler
 socat - UNIX-CONNECT:"$SOCKET" | while read -r ev; do
     case $ev in
-    "activewindowv2"*)
+    "activewindowv2>>"*)
         handle_event
         ;;
     "fullscreen>>"*)
