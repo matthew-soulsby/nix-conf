@@ -14,6 +14,28 @@
                     show_icons = true;
                     ignored = "-";
                 };
+
+                layouts = {
+                    "*" = {
+                      left = [
+                        "workspaces"
+                        "windowtitle"
+                      ];
+                      middle = [
+                        "media"
+                      ];
+                      right = [
+                        "volume"
+                        "network"
+                        "bluetooth"
+                        "battery"
+                        "systray"
+                        "clock"
+                        "notifications"
+                        "dashboard"
+                      ];
+                    };
+                };
             };
 
             menus = {
