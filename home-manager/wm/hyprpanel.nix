@@ -52,6 +52,22 @@
                         };
                         shortcut4.command = "~/.config/rofi/launchers/type-1/launcher.sh";
                     };
+
+                    directories = {
+                        left = {
+                            directory1.command = "bash -c \"thunar $HOME/Downloads/\"";
+                            directory2.command = "bash -c \"thunar $HOME/Videos/\"";
+                            directory3 = {
+                                label = "󰚝 Repos";
+                                command = "bash -c \"xdg-open $HOME/repos/\"";
+                            };
+                        };
+                        right = {
+                            directory1.command = "bash -c \"thunar $HOME/Documents/\"";
+                            directory2.command = "bash -c \"thunar $HOME/Pictures/\"";
+                            directory3.command = "bash -c \"thunar $HOME/\"";
+                        };
+                    };
                 };
 
                 clock = {
