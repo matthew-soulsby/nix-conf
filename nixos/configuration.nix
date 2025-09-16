@@ -22,6 +22,9 @@
     # System wide app config
     ./hyprland.nix
     ./greetd.nix
+
+    # Printers
+    ./printing.nix
   ];
 
   nixpkgs = {
