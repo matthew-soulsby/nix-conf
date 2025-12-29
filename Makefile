@@ -14,4 +14,5 @@ news:
 	home-manager news --flake ".#mattsoulsby@nix-laptop"
 
 cleanup:
+	sudo nix-collect-garbage --delete-old
 	nix-collect-garbage --delete-old

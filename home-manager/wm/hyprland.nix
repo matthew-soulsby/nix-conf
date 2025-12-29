@@ -182,9 +182,9 @@ in {
         ", XF86AudioPrev, exec, playerctl previous"
       ];
 
-      gestures = {
-        workspace_swipe = true;
-      };
+      gesture = [
+        "3, horizontal, workspace"
+      ];
 
       layerrule = [
         "blur, waybar"
