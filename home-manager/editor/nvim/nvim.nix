@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{pkgs, ...}:
 
 let
   treesitterWithGrammars = (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
@@ -32,10 +32,13 @@ in
   home.packages = with pkgs; [
     ripgrep
     fd
-    lua-language-server
     nodejs_22
     gcc
     rsync
+
+    # Language servers
+    nixd
+    lua-language-server
   ];
 
   programs.lazygit = {

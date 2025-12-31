@@ -1,50 +1,37 @@
 local language_servers = {
-    "lua_ls",       -- Lua
-    "pyright",      -- Python
-    "dockerls",     -- Docker
---    "zls",          -- Zig
-    "ts_ls",        -- JS/TS
-    "volar",        -- Vue
+    {
+        "lua_ls",
+        {
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        -- Get the language server to recognize the `vim` global
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        -- Make the server aware of Neovim runtime files
+                        library = vim.api.nvim_get_runtime_file("", true),
+                    },
+                },
+            },
+        }
+    },
+    { "nixd" },         -- Nix
+}
+local autoformat_files = {
+    "*.cs"
 }
 
-
 return {
-    --[[
-    {
-        "williamboman/mason.nvim",
-        dependencies = {
-            { "mason-org/mason.nvim", version = "^1.0.0" },
-            { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
-        },
-        opts = {
-            ui = {
-                border = "rounded"
-            }
-        }
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = language_servers
-        }
-    },
     {
         "neovim/nvim-lspconfig",
-        dependencies = {
-            { "mason-org/mason.nvim", version = "^1.0.0" },
-            { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
-        },
         config = function()
-            local lspconfig = vim.lsp.config
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            local autoformat_files = {
-                "*.cs"
-            }
-
             for _, language_server in ipairs(language_servers) do
-                lspconfig[language_server].setup({
-                    capabilities = capabilities
-                })
+                local name, config = language_server[1], language_server[2]
+                vim.lsp.enable(name)
+                if config ~= nil then
+                    vim.lsp.config(name, config)
+                end
             end
 
             vim.api.nvim_create_autocmd('LspAttach', {
@@ -71,6 +58,5 @@ return {
             })
         end
     }
-    --]]
 }
 
