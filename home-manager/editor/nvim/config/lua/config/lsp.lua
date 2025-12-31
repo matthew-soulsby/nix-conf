@@ -1,13 +1,12 @@
 local language_servers = {
     "lua_ls",       -- Lua
 }
-local lspconfig = vim.lsp.config
 local autoformat_files = {
     "*.cs"
 }
 
 for _, language_server in ipairs(language_servers) do
-    lspconfig[language_server].enable(language_server)
+    vim.lsp.enable(language_server)
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
