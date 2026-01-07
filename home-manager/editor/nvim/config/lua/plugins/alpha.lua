@@ -31,15 +31,13 @@ return {
 
         dashboard.section.buttons.val = {
             dashboard.button('n', '  New file', ':ene <BAR> startinsert <CR>'),
-            dashboard.button('f', '  Find file',
-                ':silent Telescope find_files hidden=true <CR>'),
-            dashboard.button('t', '  Find text', ':Telescope live_grep <CR>'),
-            dashboard.button('b', '  Browse files', ':Telescope file_browser hidden=true <CR>'),
-            dashboard.button('r', '󰄉  Recent files', ':Telescope oldfiles <CR>'),
-            dashboard.button('s', '󰢹  Remote session', ':RemoteStart <CR>'),
-            dashboard.button('u', '  Update plugins', '<cmd>Lazy update<CR>'),
-            dashboard.button('p', '  Projects', ':Telescope file_browser path=$HOME/repos <CR>'),
-            dashboard.button('q', '󰿅  Quit', '<cmd>qa<CR>'),
+            dashboard.button('f', '  Find file', ':lua require("snacks").picker.files() <CR>'),
+            dashboard.button('t', '  Find text', ':lua require("snacks").picker.grep() <CR>'),
+            dashboard.button('b', '  Browse files', ':lua require("snacks").explorer() <CR>'),
+            dashboard.button('r', '󰄉  Recent files', ':lua require("snacks").picker.recent() <CR>'),
+            dashboard.button('u', '  Update plugins', ':Lazy update<CR>'),
+            dashboard.button('p', '  Projects', ':lua require("snacks").picker.projects() <CR>'),
+            dashboard.button('q', '󰿅  Quit', ':qa<CR>'),
         }
 
         vim.api.nvim_create_autocmd('User', {
