@@ -17,6 +17,8 @@ local language_servers = {
         }
     },
     { "nixd" },         -- Nix
+    { "tsgo" },         -- Typescript (Experimental Go LSP)
+    { "tailwindcss" },  -- Tailwind
 }
 local autoformat_files = {
     "*.cs"
