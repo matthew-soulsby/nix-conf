@@ -2,20 +2,41 @@ return {
     {
         "folke/snacks.nvim",
         opts = {
-            picker = {},
-            explorer = {},
+            picker = {
+            },
+            explorer = {
+            },
+            gh = {
+            },
+            lazygit = {
+                win = {
+                    border = "rounded",
+                },
+            },
         },
         keys = {
+            -- Picker
             { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
             { "<leader>fg", function() Snacks.picker.grep() end, desc = "Grep" },
             { "<leader>fb", function() Snacks.explorer() end, desc = "File Browser" },
             { "<leader>tb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 
             -- LSP
-            { "<leader>gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-            { "<leader>gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-            { "<leader>gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-            { "<leader>gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
+            { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
+            { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
+            { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+            { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
+
+            -- Lazygit
+            { "<leader>og", function() Snacks.lazygit.open() end, desc = "Open Lazygit" },
+            { "<leader>ol", function() Snacks.lazygit.log() end, desc = "Open Lazygit (log view)" },
+            { "<leader>oL", function() Snacks.lazygit.log_file() end, desc = "Open Lazygit (log view of current file)" },
+
+            -- Github
+            { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues (open)" },
+            { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
+            { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
+            { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
         },
     },
     {
