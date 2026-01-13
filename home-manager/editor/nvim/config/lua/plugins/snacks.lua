@@ -27,6 +27,12 @@ return {
         opts = {
             picker = {
                 enabled = true,
+                sources = {
+                    explorer = {
+                        auto_close = true,
+                        layout = "default",
+                    },
+                },
             },
             explorer = {
                 enabled = true,
@@ -48,7 +54,7 @@ return {
                         { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
                         { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
                         { icon = " ", key = "t", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                        { icon = " ", key = "b", desc = "Browse Files", action = ":lua Snacks.dashboard.explorer()" },
+                        { icon = " ", key = "b", desc = "Browse Files", action = ":lua Snacks.explorer()" },
                         { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
                         { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
                         { icon = " ", key = "u", desc = "Update Plugins", action = ":Lazy update", enabled = package.loaded.lazy ~= nil },
@@ -64,9 +70,9 @@ return {
                     },
                 },
                 sections = {
-                    { section = "header" },
+                    { section = "header", padding = 2 },
                     { section = "keys", gap = 1, padding = 2 },
-                    { section = "startup" },
+                    { section = "startup", padding = 2 },
                 },
             },
         },
