@@ -1,16 +1,72 @@
+local default_header = [[
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+]]
+local angled_header = [[
+       ████ ██████           █████      ██                    
+      ███████████             █████                            
+      █████████ ███████████████████ ███   ███████████  
+     █████████  ███    █████████████ █████ ██████████████  
+    █████████ ██████████ █████████ █████ █████ ████ █████  
+  ███████████ ███    ███ █████████ █████ █████ ████ █████ 
+ ██████  █████████████████████ ████ █████ █████ ████ ██████
+]]
+
 return {
     {
         "folke/snacks.nvim",
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
+        priority = 1000,
+        lazy = false,
         opts = {
             picker = {
+                enabled = true,
             },
             explorer = {
+                enabled = true,
             },
             gh = {
+                enabled = true,
             },
             lazygit = {
+                enabled = true,
                 win = {
                     border = "rounded",
+                },
+            },
+            dashboard = {
+                enabled = true,
+                preset = {
+                    header = angled_header,
+                    keys = {
+                        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+                        { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                        { icon = " ", key = "t", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+                        { icon = " ", key = "b", desc = "Browse Files", action = ":lua Snacks.dashboard.explorer()" },
+                        { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                        { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+                        { icon = " ", key = "u", desc = "Update Plugins", action = ":Lazy update", enabled = package.loaded.lazy ~= nil },
+                        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+                    },
+                },
+                formats = {
+                    header = {
+                        "%s",
+                        align = "center",
+                        padding = 100,
+                        hl = 'Type',
+                    },
+                },
+                sections = {
+                    { section = "header" },
+                    { section = "keys", gap = 1, padding = 2 },
+                    { section = "startup" },
                 },
             },
         },
@@ -39,6 +95,8 @@ return {
             { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
         },
     },
+
+    -- 
     {
         "folke/lazydev.nvim",
         ft = "lua",
