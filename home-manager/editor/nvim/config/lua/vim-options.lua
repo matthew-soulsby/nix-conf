@@ -14,3 +14,4 @@ vim.opt.inccommand = 'split'
 
 vim.opt.wrap = false
 
+vim.opt.showtabline = 0
